@@ -1,0 +1,7 @@
+{
+  "name": "ionic_play",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
