@@ -1,22 +1,70 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonPage, IonTitle, IonToolbar, 
+    IonList, IonLabel,
+    IonCol
+ } from '@ionic/react';
+import { create, trash, add } from 'ionicons/icons';
+import React, { useState, useEffect } from "react";
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
 const Home: React.FC = () => {
+  // let strLabel = ""
+  // const dataList = ["Tiger", "Cat", "Dog", "Duck"]
+
+  const [listData, setListData] = useState<string[]>(["Tiger", "Cat", "Dog", "Duck"]);
+  const [strLabel, setStrLabel] = useState<string>("");
+
+  const onAdd = () => {
+    if(strLabel.length>0){
+      setListData([...listData, strLabel]);
+      setStrLabel("");
+    }
+  };
+
+  const onUpdate = (idx: number) => {
+
+  };
+  
+  const onDelete = (idx: number) => {
+  };
+
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>Playing</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+
+      <IonContent className="ion-padding">
+
+        <IonItem>
+          <IonInput type="text" placeholder="Enter task" value={strLabel} 
+            onIonChange={e => {
+              if (e.detail.value === undefined) return;
+              setStrLabel(e.detail.value!)
+            }}
+            ></IonInput>
+          <IonButton onClick={onAdd}><IonIcon icon={add}>Add task</IonIcon></IonButton>
+        </IonItem>
+
+        <IonList>
+            {listData.map((item, index) => (
+              <IonItem key={index}>
+                {item}
+                <IonCol class="ion-float-right">
+                  <IonButton className="ion-float-right" onClick={onUpdate(index)}>
+                    <IonIcon icon={trash}></IonIcon>
+                  </IonButton>
+                  <IonButton className="ion-float-right" onClick={onDelete(index)}>
+                    <IonIcon icon={create}></IonIcon>
+                  </IonButton>
+                </IonCol>
+              </IonItem>
+            ))}
+        </IonList>
+        
       </IonContent>
     </IonPage>
   );
