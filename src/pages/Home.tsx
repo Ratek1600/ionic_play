@@ -26,6 +26,9 @@ const Home: React.FC = () => {
   };
   
   const onDelete = (idx: number) => {
+    const newArr = [...listData];
+    newArr.splice(idx, 1);
+    setListData(newArr);
   };
 
 
@@ -54,10 +57,10 @@ const Home: React.FC = () => {
               <IonItem key={index}>
                 {item}
                 <IonCol class="ion-float-right">
-                  <IonButton className="ion-float-right" onClick={onUpdate(index)}>
+                  <IonButton className="ion-float-right" onClick={() => onDelete(index)}>
                     <IonIcon icon={trash}></IonIcon>
                   </IonButton>
-                  <IonButton className="ion-float-right" onClick={onDelete(index)}>
+                  <IonButton className="ion-float-right" onClick={() => onUpdate(index)}>
                     <IonIcon icon={create}></IonIcon>
                   </IonButton>
                 </IonCol>
