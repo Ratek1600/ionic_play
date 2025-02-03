@@ -22,7 +22,12 @@ const Home: React.FC = () => {
   };
 
   const onUpdate = (idx: number) => {
-
+    const newArr = [...listData];
+    const editedLabel = prompt('Enter new Label:');
+    if (editedLabel!==null && editedLabel.trim()!=='') {
+      newArr[idx] = editedLabel
+      setListData(newArr)
+    }
   };
   
   const onDelete = (idx: number) => {
