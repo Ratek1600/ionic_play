@@ -1,11 +1,14 @@
 import { IonButton, IonContent, IonHeader, IonIcon, IonInput, IonItem, IonPage, IonTitle, IonToolbar, 
-    IonList, IonLabel,
-    IonCol
+    IonList, IonCol, 
+    IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
+    IonNavLink,
+    IonLabel
  } from '@ionic/react';
 import { create, trash, add } from 'ionicons/icons';
-import React, { useState, useEffect } from "react";
-import ExploreContainer from '../components/ExploreContainer';
+import React, { useState } from "react";
 import './Home.css';
+
+import TodoString from './TodoString';
 
 const Home: React.FC = () => {
   // let strLabel = ""
@@ -14,63 +17,28 @@ const Home: React.FC = () => {
   const [listData, setListData] = useState<string[]>(["Tiger", "Cat", "Dog", "Duck"]);
   const [strLabel, setStrLabel] = useState<string>("");
 
-  const onAdd = () => {
-    if(strLabel.length>0){
-      setListData([...listData, strLabel]);
-      setStrLabel("");
-    }
-  };
-
-  const onUpdate = (idx: number) => {
-    const newArr = [...listData];
-    const editedLabel = prompt('Enter new Label:');
-    if (editedLabel!==null && editedLabel.trim()!=='') {
-      newArr[idx] = editedLabel
-      setListData(newArr)
-    }
-  };
-  
-  const onDelete = (idx: number) => {
-    const newArr = [...listData];
-    newArr.splice(idx, 1);
-    setListData(newArr);
-  };
-
-
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Playing</IonTitle>
+          <IonTitle>Play Ionic</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent className="ion-padding">
+        <IonCard>
+          <IonCardHeader>
+            <IonCardTitle>Play With Ionic React</IonCardTitle>
+          </IonCardHeader>
 
-        <IonItem>
-          <IonInput type="text" placeholder="Enter task" value={strLabel} 
-            onIonChange={e => {
-              if (e.detail.value === undefined) return;
-              setStrLabel(e.detail.value!)
-            }}
-            ></IonInput>
-          <IonButton onClick={onAdd}><IonIcon icon={add}>Add task</IonIcon></IonButton>
-        </IonItem>
+          <IonCardContent>Hi, I try to make tutorial and sample code using Ionic React. Hope it can help you learn code</IonCardContent>
+        </IonCard>
 
         <IonList>
-            {listData.map((item, index) => (
-              <IonItem key={index}>
-                {item}
-                <IonCol class="ion-float-right">
-                  <IonButton className="ion-float-right" onClick={() => onDelete(index)}>
-                    <IonIcon icon={trash}></IonIcon>
-                  </IonButton>
-                  <IonButton className="ion-float-right" onClick={() => onUpdate(index)}>
-                    <IonIcon icon={create}></IonIcon>
-                  </IonButton>
-                </IonCol>
-              </IonItem>
-            ))}
+          <IonItem routerLink="/simple_todo">
+            <IonLabel>Simple Todo</IonLabel>
+          </IonItem>
+
         </IonList>
         
       </IonContent>
