@@ -35,9 +35,8 @@ const Home: React.FC = () => {
         </IonCard>
 
         <IonList>
-          <IonItem routerLink="/simple_todo">
-            <IonLabel>Simple Todo</IonLabel>
-          </IonItem>
+          <IonItem routerLink="/todo_string">Todo List String</IonItem>
+          <IonItem routerLink="/todo_object">Todo List Object</IonItem>
 
         </IonList>
         
