@@ -18,7 +18,7 @@ const TodoObject: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [listFruit, setListFruit] = useState<Fruit[]>([
-    {id: 1, name: "Apple", colour: "Read"},
+    {id: 1, name: "Apple", colour: "Red"},
     {id: 2, name: "Orange", colour: "Orange"},
     {id: 3, name: "Banana", colour: "Yellow"},
   ]);

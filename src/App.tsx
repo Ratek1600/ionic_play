@@ -35,6 +35,7 @@ import './theme/variables.css';
 import Home from './pages/Home';
 import TodoString from './pages/TodoString';
 import TodoObject from './pages/TodoObject';
+import CameraPage from './pages/CameraPage';
 
 setupIonicReact();
 
@@ -51,6 +52,7 @@ const App: React.FC = () => (
         
         <Route path="/todo_string" component={TodoString} />
         <Route path="/todo_object" component={TodoObject} />
+        <Route path="/camera" component={CameraPage} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
